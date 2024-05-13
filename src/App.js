@@ -17,9 +17,9 @@ function App () {
 
   const handleClickEvent = (e)=>{
     
-    console.log(searchWord);
+    // console.log(searchWord);
     
-    if( searchWord === '' ) return;
+    // if( searchWord === '' ) return;
 
     let isWordFound = words.find((items)=>{
       return items.word.toLowerCase() === searchWord.toLowerCase()
