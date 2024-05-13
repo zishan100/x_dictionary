@@ -34,10 +34,10 @@ function App () {
   }
 
   return (
-    <>
+    <div>
       <h3>Dictionary App</h3>
       <input 
-        text='text' 
+        type='text' 
         placeholder='Search for a word...'
         onChange={(e)=>setSearchWord(e.target.value)}
         value={searchWord} 
@@ -51,7 +51,7 @@ function App () {
       {
         (searchMatch) && ( <p>{searchMatch}</p> )
       }
-    </>
+    </div>
   );
   
 }
