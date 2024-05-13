@@ -34,7 +34,7 @@ function App () {
   }
 
   return (
-    <div >
+    <>
       <h3>Dictionary App</h3>
       <input 
         text='text' 
@@ -51,7 +51,7 @@ function App () {
       {
         (searchMatch) && ( <p>{searchMatch}</p> )
       }
-    </div>
+    </>
   );
   
 }
