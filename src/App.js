@@ -19,6 +19,8 @@ function App () {
     
     console.log(searchWord);
     
+    if( searchWord === '' ) return;
+
     let isWordFound = words.find((items)=>{
       return items.word.toLowerCase() === searchWord.toLowerCase()
     })
@@ -44,7 +46,7 @@ function App () {
         type='button' 
         onClick={handleClickEvent}
       >Search</button>
-      <h4>Defination:</h4>
+      <h4>Definition:</h4>
       
       {
         (searchMatch) && ( <p>{searchMatch}</p> )
