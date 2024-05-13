@@ -11,7 +11,7 @@ function App () {
 
     { date: "2023-09-02", views: 150, article: "Article 2" },
 
-    { date: "2023-09-02", views: 120, article: "Article 3" },
+    { date: "2023-09-02", views: 200, article: "Article 3" },
 
     { date: "2020-09-03", views: 200, article: "Article 4" }
   ]
@@ -22,22 +22,31 @@ function App () {
     setTableArr(tableData);
   },[])
   
-  const sortByDate = (e)=>{
+  const handleClickEvent = (e)=>{
     
-    console.log(tableData);    
-
-    tableArr.sort((a,b)=>(new Date(b.date).getTime()-new Date(a.date).getTime()));
-    
+    if( e.target.id === 'date' ){
+      tableArr.sort(comparatorByDate);  
+    }else{
+      tableArr.sort(comparatorByView);
+    }    
     setTableArr([...tableArr]);
   } 
 
-  const sortByView = (e)=>{
-
-    tableArr.sort((a,b)=>(b.views-a.views));
+  const comparatorByDate = (a,b)=>{
     
-    setTableArr([...tableArr]);
+    if( a.date < b.date ) return 1;
+    else if( a.date > b.date ) return -1;
+    
+    return b.views - a.views;
   }
-
+  
+  const comparatorByView = (a,b)=>{
+    
+    if( a.views < b.views ) return 1;
+    else if( a.views > b.views ) return -1;
+    
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  }
 
   
 
@@ -45,12 +54,14 @@ function App () {
     <div>
       <h1>Date and Views Table</h1>
       <button 
-        type='button' 
-        onClick={sortByDate}
+        type='button'
+        id='date' 
+        onClick={handleClickEvent}
       >Sort by Date</button>
       <button 
         type='button'
-        onClick={sortByView} 
+        id='view'
+        onClick={handleClickEvent} 
       >Sort by Views</button> 
       <table>
         <thead>
